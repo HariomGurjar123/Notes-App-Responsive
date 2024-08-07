@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>My Notes !</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <style>
+      body {
+        background-color: rgb(45, 44, 44);
+        font-family: sans-serif;
+      }
+      nav {
+        width: 100%;
+        height: 75px;
+        background-color: rgba(149, 208, 242, 0.781);
+      }
+      nav p {
+        font-size: 30px;
+        font-weight: 600;
+        font-family: sans-serif;
+        margin-left: 40px;
+      }
+
+      nav button i {
+        font-size: 30px;
+        font-weight: 600;
+      }
+
+      nav #Important {
+        width: 110px;
+        height: 42px;
+        border: 2px solid black;
+        border-radius: 8px;
+        font-weight: 600;
+        position: relative;
+        background-color: rgba(149, 208, 242, 0.781);
+        left: -170px;
+        margin-left: 30px;
+        transition: all 0.3 ease-in-out;
+        cursor: pointer;
+      }
+
+      nav #Notes {
+        width: 70px;
+        height: 42px;
+        border: 2px solid black;
+        border-radius: 8px;
+        font-weight: 600;
+        position: relative;
+        background-color: rgba(149, 208, 242, 0.781);
+        left: -160px;
+        margin-left: 30px;
+        transition: all 0.3 ease-in-out;
+        cursor: pointer;
+      }
+
+      .dropdown button {
+        width: 130px;
+        height: 42px;
+        border: 2px solid black;
+        border-radius: 8px;
+        color: rgba(255, 255, 255, 0.705);
+        font-weight: 600;
+        position: absolute;
+        top: -43px;
+        left: 100px;
+        background-color: rgb(45, 44, 44);
+        transition: all 0.3 ease-in-out;
+        cursor: pointer;
+      }
+      .dropdown:hover > .dropdown-menu {
+        display: block;
+        padding: 25px;
+      }
+      .dropdown-menu {
+        background: transparent;
+        margin-left: 85px;
+        background-color: rgba(149, 208, 242, 0.781);
+        border: 2px solid rgba(0, 0, 0, 0.722);
+        box-shadow: 0px 0px 5px rgb(22, 13, 13);
+      }
+      .dropdown-item {
+        background: rgb(147, 199, 199);
+        font-weight: 600;
+      }
+
+      .dropdown > .dropdown-toggle:active {
+        /*Without this, clicking will make it sticky*/
+        pointer-events: none;
+      }
+
+      .btn-one {
+        color: #140e0e;
+        transition: all 0.5s;
+        position: relative;
+      }
+      .btn-one::before {
+        content: "Imp Notes !";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding-top: 8px;
+        color: rgba(255, 255, 255, 0.705);
+        height: 100%;
+        z-index: 1;
+        background-color: rgb(45, 44, 44);
+        transition: all 0.3s;
+      }
+      .btn-one:hover::before {
+        opacity: 0;
+        transform: scale(0.5, 0.5);
+      }
+      .btn-one::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0;
+        transition: all 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        transform: scale(1.2, 1.2);
+      }
+      .btn-one:hover::after {
+        opacity: 1;
+        transform: scale(1, 1);
+      }
+
+      .btn-two {
+        color: #140e0e;
+        transition: all 0.5s;
+        position: relative;
+      }
+      .btn-two::before {
+        content: "Profile";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding-top: 8px;
+        color: rgba(255, 255, 255, 0.705);
+        height: 100%;
+        z-index: 1;
+        background-color: rgb(45, 44, 44);
+        transition: all 0.3s;
+      }
+      .btn-two:hover::before {
+        opacity: 0;
+        transform: scale(0.5, 0.5);
+      }
+      .btn-two::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0;
+        transition: all 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        transform: scale(1.2, 1.2);
+      }
+      .btn-two:hover::after {
+        opacity: 1;
+        transform: scale(1, 1);
+      }
+
+      .btn-three {
+        color: #140e0e;
+        transition: all 0.5s;
+        position: relative;
+      }
+      .btn-three::before {
+        content: "Notes";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding-top: 8px;
+        color: rgba(255, 255, 255, 0.705);
+        height: 100%;
+        z-index: 1;
+        background-color: rgb(45, 44, 44);
+        transition: all 0.3s;
+      }
+      .btn-three:hover::before {
+        opacity: 0;
+        transform: scale(0.5, 0.5);
+      }
+      .btn-three::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0;
+        transition: all 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        transform: scale(1.2, 1.2);
+      }
+      .btn-three:hover::after {
+        opacity: 1;
+        transform: scale(1, 1);
+      }
+
+      #AddContent {
+        max-width: 420px;
+        height: 440px;
+        border: 4px solid rgba(134, 199, 237, 0.509);
+        border-radius: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        color: rgb(185, 179, 179);
+        transition: background-color 1.2s ease, box-shadow 0.3s ease;
+      }
+
+      #AddContent:focus-within {
+        background-color: rgba(16, 16, 16, 0.5);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      #AddContent label[for="title"] {
+        font-size: 20px;
+        font-weight: 600;
+      }
+      #AddContent label[for="descrip"] {
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      #AddContent input {
+        height: 35px;
+        width: 280px;
+        border-radius: 12px;
+        border: none;
+        outline: none;
+      }
+
+      #AddContent textarea {
+        max-width: 322px;
+        height: 160px;
+        border-radius: 12px;
+        border: none;
+        outline: none;
+        resize: none;
+      }
+
+      #AddContent input[type="text"] {
+        font-weight: 600;
+        padding-left: 15px;
+      }
+
+      #AddContent textarea[type="text"] {
+        font-weight: 600;
+        font-size: 15px;
+        padding-left: 15px;
+        padding-top: 10px;
+      }
+
+      #AddContent input::selection {
+        background-color: rgb(152, 146, 146);
+        color: black;
+      }
+      #AddContent textarea::selection {
+        background-color: rgb(152, 146, 146);
+        color: black;
+      }
+
+      #AddContent input:focus {
+        background-color: rgb(165, 199, 211);
+      }
+      #AddContent textarea:focus {
+        background-color: rgb(165, 199, 211);
+      }
+
+      #Add {
+        width: 60px;
+        height: 40px;
+        border-radius: 8px;
+        border: 2px solid rgba(0, 0, 0, 0.541);
+        background-color: rgba(134, 199, 237, 0.509);
+        font-weight: 600;
+        color: white;
+        position: relative;
+        top: 100px;
+        left: 165px;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+      }
+      #AddInImp {
+        width: 90px;
+        height: 40px;
+        border-radius: 8px;
+        border: 2px solid rgba(0, 0, 0, 0.541);
+        background-color: rgba(134, 199, 237, 0.509);
+        font-weight: 600;
+        color: white;
+        position: relative;
+        top: 101px;
+        left: 160px;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+      }
+
+      #Add:hover {
+        background-color: rgba(134, 199, 237, 0.509);
+        color: rgba(0, 0, 0, 0.829);
+        border: 2px solid rgba(149, 208, 242, 0.781);
+      }
+      #AddInImp:hover {
+        background-color: rgba(134, 199, 237, 0.509);
+        color: rgba(0, 0, 0, 0.829);
+        border: 2px solid rgba(149, 208, 242, 0.781);
+      }
+
+      #AddInImp ion-icon {
+        font-size: 20px;
+        position: relative;
+        top: 5px;
+        right: 4px;
+      }
+
+      #NoteAddSucc {
+        width: 250px;
+        height: 30px;
+        padding-top: 3px;
+        border-radius: 15px;
+        border: 1px solid rgba(0, 0, 0, 0.453);
+        transition: all 1s ease-in-out;
+        background-color: rgb(112, 165, 212);
+        color: rgba(0, 0, 0, 0.677);
+        font-weight: 600;
+        position: fixed;
+        z-index: 99;
+        margin-left: 80px;
+        display: none;
+      }
+      #NoteAddImpSucc {
+        width: 250px;
+        height: 30px;
+        padding-top: 3px;
+        border-radius: 15px;
+        border: 1px solid rgba(0, 0, 0, 0.453);
+        transition: all 1s ease-in-out;
+        background-color: rgb(112, 165, 212);
+        color: rgba(0, 0, 0, 0.677);
+        font-weight: 600;
+        position: fixed;
+        z-index: 99;
+        margin-left: 80px;
+        display: none;
+      }
+
+      #wrongEmail {
+        width: 250px;
+        height: 30px;
+        padding-top: 3px;
+        position: absolute;
+        left: 85px;
+        border-radius: 15px;
+        border: 1px solid rgba(0, 0, 0, 0.453);
+        transition: all 1s ease-in-out;
+        background-color: rgb(155, 196, 231);
+        color: rgba(123, 27, 27, 0.677);
+        font-weight: 600;
+        position: fixed;
+        z-index: 99;
+        display: none;
+      }
+      .display-none {
+        display: none;
+      }
+
+      #backgroundShow {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 9;
+        background-color: rgba(51, 50, 50, 0.874);
+        display: none;
+      }
+
+      #verifyPassword {
+        max-width: 380px;
+        height: 140px;
+        background-color: #c7c8c8;
+        border-radius: 20px;
+        opacity: 10;
+        position: absolute;
+        left: 25px;
+        z-index: 99;
+        display: none;
+      }
+      #verifyPassword #close {
+        position: relative;
+        left: 218px;
+        top: -4px;
+        -webkit-text-stroke: 1px;
+        font-size: 40px;
+        cursor: pointer;
+      }
+      #verifyPassword label {
+        position: relative;
+        left: -10px;
+        top: 15px;
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      #verifyPassword input {
+        position: relative;
+        top: 15px;
+        left: 17px;
+        height: 35px;
+        max-width: 270px;
+        border-radius: 12px;
+        border: none;
+        outline: none;
+      }
+      #verifyPassword input[type="text"] {
+        font-weight: 600;
+        padding-left: 15px;
+      }
+
+      #verifyPassword input:focus {
+        background-color: rgb(165, 199, 211);
+      }
+      #verifyPassword #enterBtn {
+        position: relative;
+        top: 20px;
+        left: -20px;
+        -webkit-text-stroke: 1px;
+        font-size: 28px;
+        cursor: pointer;
+      }
+      #namecome {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: rgb(196, 140, 159);
+        font-size: 28;
+        text-transform: capitalize;
+      }
+
+      #logoutBtn {
+        cursor: pointer;
+      }
+
+      #logoutMsg {
+        width: 250px;
+        height: 30px;
+        padding-top: 3px;
+        position: absolute;
+        left: 85px;
+        border-radius: 15px;
+        border: 1px solid rgba(0, 0, 0, 0.453);
+        transition: all 1s ease-in-out;
+        background-color: rgb(155, 196, 231);
+        color: rgba(123, 27, 27, 0.677);
+        font-weight: 600;
+        position: fixed;
+        z-index: 99;
+        display: none;
+      }
+
+      #backgroundLogoutShow {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 9;
+        background-color: rgba(51, 50, 50, 0.874);
+        display: none;
+      }
+
+      #openLogout {
+        max-width: 380px;
+        height: 150px;
+        border-radius: 15px;
+        background-color: #c7c8c8;
+        position: absolute;
+        display: none;
+      }
+      #openLogout p {
+        font-size: 22px;
+        font-weight: 600;
+      }
+      #openLogout .bi-x {
+        -webkit-text-stroke: 2px;
+        font-size: 43px;
+        cursor: pointer;
+      }
+      #openLogout .bi-check-lg {
+        -webkit-text-stroke: 2px;
+        font-size: 40px;
+        cursor: pointer;
+      }
+      .accordion-flush {
+        max-width: 200px;
+      }
+      .showIcon a {
+        font-size: 28px;
+        width: 50px;
+        cursor: pointer;
+        color: black;
+      }
+      #ImportantRes {
+        font-size: 28px;
+        width: 50px;
+        cursor: pointer;
+      }
+      .modal-button {
+        margin-top: -9px;
+        margin-left: -15px;
+      }
+      .modal {
+        width: 260px;
+        position: relative;
+        left: -78px;
+        top: 90px;
+        border-radius: 20px;
+        background-color: rgb(94, 94, 94);
+      }
+      .modal-content {
+        background-color: rgba(149, 208, 242, 0.781);
+        border-radius: 20px;
+        width: 260px;
+        position: relative;
+        left: -8px;
+      }
+      .modal-list {
+        list-style: none;
+        text-decoration: none;
+        line-height: 3rem;
+        margin-left: 10px;
+      }
+      .modal-list a {
+        text-decoration: none;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="backgroundShow">
+      <div
+        id="wrongEmail"
+        class="showMsg text-center m-auto cssanimation fadeInTop"
+      >
+        email didn't match
+      </div>
+      <div class="cssanimation flipYZoomOut mt-5 mx-5" id="verifyPassword">
+        <i class="bi bi-x" id="close"></i>
+        <label class="pt-2">Enter your proper email</label><br />
+        <input type="text" id="enterValue" />
+        <i class="bi bi-box-arrow-in-right" id="enterBtn"></i>
+      </div>
+    </div>
+    <!-- cssanimation spinToTop -->
+
+    <div id="backgroundLogoutShow">
+      <div
+        id="logoutMsg"
+        class="showMsg text-center mt-4 cssanimation fadeInTop"
+      >
+        Logout Successfully
+      </div>
+      <div
+        id="openLogout"
+        class="mx-5 text-center pt-3 px-5 mt-5 cssanimation flipYZoomOut"
+      >
+        <p>Are you sure to logout</p>
+        <div class="d-flex justify-content-evenly pt-3">
+          <i class="bi bi-check-lg" id="doneLogout"></i>
+          <i class="bi bi-x" id="closeLogout"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- nav bar -->
+
+    <nav class="navbar justify-content-between">
+      <a class="navbar-brand" href="/"
+        ><p class="cssanimation effect3d">Notes !</p></a
+      >
+      <div class="showIcon d-flex justify-content-evenly d-block d-lg-none">
+        <a href="/Notes" class="mx-1"><i class="bi bi-chat-square-text"></i></a>
+        <i class="bi bi-exclamation-triangle" id="ImportantRes"></i>
+        <button
+          type="button"
+          class="btn modal-button"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          <i class="bi bi-justify"></i>
+        </button>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <ul class="modal-list">
+                  <li><a class="modal-item" href="/login">Login</a></li>
+                  <li><a class="modal-item" href="/signup">register</a></li>
+                  <li><a class="modal-item" id="logoutBtnRes">Logout</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex mx-4 d-none d-lg-block">
+        <a href="/Notes"
+          ><button class="btn-three" type="submit" id="Notes">
+            <i class="bi bi-chat-square-text"></i></button
+        ></a>
+        <button class="btn-one" type="submit" id="Important">
+          <i class="bi bi-exclamation-triangle"></i>
+        </button>
+        <div class="dropdown">
+          <button type="button" id="dropdownMenuButton">More Options</button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="/login">Login</a></li>
+            <li><a class="dropdown-item" href="/signup">register</a></li>
+            <li><a class="dropdown-item" id="logoutBtn">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <p
+      id="namecome"
+      class="cssanimation leKickOutFront sequence pt-3 text-center"
+    ></p>
+
+    <div
+      id="NoteAddSucc"
+      class="showMsg text-center mt-4 cssanimation fadeInTop"
+    >
+      Note has added
+    </div>
+    <div
+      id="NoteAddImpSucc"
+      class="showMsg text-center mt-4 cssanimation fadeInTop"
+    >
+      Note has added in Imp
+    </div>
+
+    <!-- Adding Notes -->
+
+    <div>
+      <div id="AddContent" class="mt-4 m-auto">
+        <h3 class="text-center pt-2 cssanimation leFadeIn sequence">
+          Create Notes
+        </h3>
+
+        <div style="width: 200px; height: 100px" class="mt-3 mx-5">
+          <label for="title" class=""
+            >Title<i class="bi bi-pencil p-2"></i
+          ></label>
+          <input type="text" class="mt-2" id="title" placeholder="Add Title" />
+        </div>
+
+        <div style="width: 200px; height: 100px" class="mt-3 mx-5">
+          <label for="descrip"
+            >Description<i class="bi bi-pencil-square p-2"></i
+          ></label>
+          <textarea
+            type="text"
+            class="mt-2"
+            name="text"
+            id="descrip"
+            row="10"
+            cols="40"
+            placeholder="write description"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="mx-3 mt-2" id="Add">Add</button>
+        <button type="submit" class="mt-2" id="AddInImp">
+          <ion-icon name="add-outline"></ion-icon>In imp
+        </button>
+      </div>
+    </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      async function postData(url = "", data = {}) {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        const resData = await response.json();
+        return resData;
+      }
+
+      function notesAddedMsg() {
+        const showaddnote = document.getElementById("NoteAddSucc");
+        setTimeout(() => {
+          showaddnote.style.display = "block";
+        }, 200);
+
+        setTimeout(() => {
+          showaddnote.style.opacity = "1";
+          showaddnote.style.display = "none";
+        }, 2000);
+      }
+
+      function notesAddedImpMsg() {
+        const showaddnote = document.getElementById("NoteAddImpSucc");
+        setTimeout(() => {
+          showaddnote.style.display = "block";
+        }, 200);
+
+        setTimeout(() => {
+          showaddnote.style.opacity = "1";
+          showaddnote.style.display = "none";
+        }, 2000);
+      }
+
+      const user = JSON.parse(localStorage.getItem("user"));
+      const name = JSON.parse(localStorage.getItem("name"));
+      if (!user) {
+        window.location.href = "/login";
+      }
+
+      document.getElementById("namecome").innerHTML = `Welcome ! ${name.name}`;
+
+      const Add = document.getElementById("Add");
+      Add.addEventListener("click", async () => {
+        const title = document.getElementById("title").value;
+        const descrip = document.getElementById("descrip").value;
+        const email = JSON.parse(localStorage.getItem("user"))?.email;
+        const resp = await postData("/createNotes", { title, descrip, email });
+        if (resp.success) {
+          const title = (document.getElementById("title").value = "");
+          const descrip = (document.getElementById("descrip").value = "");
+          notesAddedMsg();
+        }
+      });
+
+      const AddInImp = document.getElementById("AddInImp");
+      AddInImp.addEventListener("click", async () => {
+        const title = document.getElementById("title").value;
+        const descrip = document.getElementById("descrip").value;
+        const email = JSON.parse(localStorage.getItem("user"))?.email;
+        const resp = await postData("/createImportantNote", {
+          title,
+          descrip,
+          email,
+          important: true,
+        });
+
+        if (resp.success) {
+          const title = (document.getElementById("title").value = "");
+          const descrip = (document.getElementById("descrip").value = "");
+          notesAddedImpMsg();
+        }
+      });
+
+      function handleImportantPage() {
+        function wrongEmailMsg() {
+          const showaddnote = document.getElementById("wrongEmail");
+          setTimeout(() => {
+            showaddnote.style.display = "block";
+          }, 200);
+
+          setTimeout(() => {
+            showaddnote.style.opacity = "1";
+            showaddnote.style.display = "none";
+          }, 2000);
+        }
+
+        const impPage = document.getElementById("backgroundShow");
+        const impPageNavigation = document.getElementById("Important");
+        impPageNavigation.addEventListener("click", () => {
+          verifyPasswordDiv.style.display = "block";
+          impPage.style.display = "block";
+        });
+
+        const verifyPasswordDiv = document.getElementById("verifyPassword");
+        const closDiv = document.getElementById("close");
+        closDiv.addEventListener("click", () => {
+          verifyPasswordDiv.style.display = "none";
+          impPage.style.display = "none";
+        });
+
+        const enterButton = document.getElementById("enterBtn");
+
+        enterButton.addEventListener("click", () => {
+          const enterValue = document.getElementById("enterValue");
+          if (enterValue.value === user.email) {
+            window.location.href = "/Important-Notes";
+            enterValue.value = "";
+            impPage.style.display = "none";
+          } else {
+            wrongEmailMsg();
+            enterValue.value = "";
+          }
+        });
+      }
+
+      handleImportantPage();
+
+      // handle important page res
+
+      function handleImportantResPage() {
+        function wrongEmailMsg() {
+          const showaddnote = document.getElementById("wrongEmail");
+          setTimeout(() => {
+            showaddnote.style.display = "block";
+          }, 200);
+
+          setTimeout(() => {
+            showaddnote.style.opacity = "1";
+            showaddnote.style.display = "none";
+          }, 2000);
+        }
+
+        const impPage = document.getElementById("backgroundShow");
+        const impPageNavigation = document.getElementById("ImportantRes");
+        impPageNavigation.addEventListener("click", () => {
+          verifyPasswordDiv.style.display = "block";
+          impPage.style.display = "block";
+        });
+
+        const verifyPasswordDiv = document.getElementById("verifyPassword");
+        const closDiv = document.getElementById("close");
+        closDiv.addEventListener("click", () => {
+          verifyPasswordDiv.style.display = "none";
+          impPage.style.display = "none";
+        });
+
+        const enterButton = document.getElementById("enterBtn");
+
+        enterButton.addEventListener("click", () => {
+          const enterValue = document.getElementById("enterValue");
+          if (enterValue.value === user.email) {
+            window.location.href = "/Important-Notes";
+            enterValue.value = "";
+            impPage.style.display = "none";
+          } else {
+            wrongEmailMsg();
+            enterValue.value = "";
+          }
+        });
+      }
+
+      handleImportantResPage();
+
+      // handle logout
+      function logoutFunction() {
+        const logoutBtn = document.getElementById("logoutBtn");
+        const openLogoutBack = document.getElementById("backgroundLogoutShow");
+        const openLogoutDiv = document.getElementById("openLogout");
+        logoutBtn.addEventListener("click", () => {
+          openLogoutBack.style.display = "block";
+          openLogoutDiv.style.display = "block";
+        });
+
+        const closeLogout = document.getElementById("closeLogout");
+        closeLogout.addEventListener("click", () => {
+          openLogoutBack.style.display = "none";
+          openLogoutDiv.style.display = "none";
+        });
+
+        const doneLogout = document.getElementById("doneLogout");
+        doneLogout.addEventListener("click", async () => {
+          JSON.stringify(localStorage.removeItem("user"));
+          JSON.stringify(localStorage.removeItem("name"));
+          logoutMsg();
+        });
+      }
+
+      logoutFunction();
+
+      // handle logout Res
+      function logoutResFunction() {
+        const logoutBtn = document.getElementById("logoutBtnRes");
+        const openLogoutBack = document.getElementById("backgroundLogoutShow");
+        const openLogoutDiv = document.getElementById("openLogout");
+        logoutBtn.addEventListener("click", () => {
+          openLogoutBack.style.display = "block";
+          openLogoutDiv.style.display = "block";
+        });
+
+        const closeLogout = document.getElementById("closeLogout");
+        closeLogout.addEventListener("click", () => {
+          openLogoutBack.style.display = "none";
+          openLogoutDiv.style.display = "none";
+        });
+
+        const doneLogout = document.getElementById("doneLogout");
+        doneLogout.addEventListener("click", async () => {
+          JSON.stringify(localStorage.removeItem("user"));
+          JSON.stringify(localStorage.removeItem("name"));
+          logoutMsg();
+        });
+      }
+
+      logoutResFunction();
+
+      function logoutMsg() {
+        const showaddnote = document.getElementById("logoutMsg");
+        setTimeout(() => {
+          showaddnote.style.display = "block";
+        }, 200);
+
+        setTimeout(() => {
+          showaddnote.style.opacity = "1";
+          showaddnote.style.display = "none";
+          window.location.href = "/login";
+        }, 2000);
+      }
+    </script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/letteranimation.min.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+    <!-- <script type="text/javascript" src="cssanimation-gsap.js"></script> -->
+  </body>
+</html>

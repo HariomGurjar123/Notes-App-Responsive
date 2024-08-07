@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>My Notes !</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <style>
+      body {
+        background-color: rgb(45, 44, 44);
+        font-family: sans-serif;
+      }
+
+      nav {
+        width: 100%;
+        height: 75px;
+        background-color: rgba(149, 208, 242, 0.781);
+      }
+      nav p {
+        font-size: 30px;
+        font-weight: 600;
+        font-family: sans-serif;
+        margin-left: 40px;
+      }
+
+      nav button i {
+        font-size: 30px;
+        font-weight: 600;
+      }
+
+      nav #Important {
+        width: 110px;
+        height: 42px;
+        border: 2px solid black;
+        border-radius: 8px;
+        font-weight: 600;
+        position: relative;
+        background-color: rgba(149, 208, 242, 0.781);
+        left: -50px;
+        margin-left: 30px;
+        transition: all 0.3 ease-in-out;
+        cursor: pointer;
+      }
+
+      nav #Profile {
+        width: 70px;
+        height: 42px;
+        border: 2px solid black;
+        border-radius: 8px;
+        font-weight: 600;
+        position: relative;
+        background-color: rgba(149, 208, 242, 0.781);
+        left: -50px;
+        margin-left: 30px;
+        transition: all 0.3 ease-in-out;
+        cursor: pointer;
+      }
+
+      .btn-one {
+        color: #140e0e;
+        transition: all 0.5s;
+        position: relative;
+      }
+      .btn-one::before {
+        content: "Home Page";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding-top: 8px;
+        color: rgba(255, 255, 255, 0.705);
+        height: 100%;
+        z-index: 1;
+        background-color: rgb(45, 44, 44);
+        transition: all 0.3s;
+      }
+      .btn-one:hover::before {
+        opacity: 0;
+        transform: scale(0.5, 0.5);
+      }
+      .btn-one::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0;
+        transition: all 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        transform: scale(1.2, 1.2);
+      }
+      .btn-one:hover::after {
+        opacity: 1;
+        transform: scale(1, 1);
+      }
+
+      .btn-two {
+        color: #140e0e;
+        transition: all 0.5s;
+        position: relative;
+      }
+      .btn-two::before {
+        content: "Profile";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding-top: 8px;
+        color: rgba(255, 255, 255, 0.705);
+        height: 100%;
+        z-index: 1;
+        background-color: rgb(45, 44, 44);
+        transition: all 0.3s;
+      }
+      .btn-two:hover::before {
+        opacity: 0;
+        transform: scale(0.5, 0.5);
+      }
+      .btn-two::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0;
+        transition: all 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        transform: scale(1.2, 1.2);
+      }
+      .btn-two:hover::after {
+        opacity: 1;
+        transform: scale(1, 1);
+      }
+
+      .card-big-shadow {
+        max-width: 120px;
+        position: relative;
+      }
+
+      .coloured-cards .card {
+        margin-top: 30px;
+      }
+
+      .card[data-radius="none"] {
+        border-radius: 14px;
+      }
+      .card {
+        min-width: 280px;
+        min-height: 300px;
+        border-radius: 8px;
+        box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
+        background-color: #d0cdcd;
+        color: #252422;
+        margin-bottom: 20px;
+        position: relative;
+        border: 4px solid rgba(149, 208, 242, 0.781);
+        z-index: 1;
+      }
+
+      .card[data-color="blue"] .category {
+        color: #5b6465;
+      }
+
+      .card .category,
+      .card .label {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 0px;
+      }
+      .card-big-shadow:before {
+        background-image: url("http://static.tumblr.com/i21wc39/coTmrkw40/shadow.png");
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        bottom: -12%;
+        content: "";
+        display: block;
+        left: -12%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 0;
+      }
+      h4,
+      .h4 {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.2em;
+      }
+
+      .card .description {
+        font-size: 17px;
+        color: #66615b;
+      }
+      .content-card {
+        margin-top: 30px;
+      }
+
+      /*======== COLORS ===========*/
+      .card[data-color="blue"] {
+        background: #d6d5d5;
+      }
+      .card[data-color="blue"] .description {
+        color: #7b8485;
+        font-weight: 600;
+      }
+
+      h1 {
+        color: rgb(196, 140, 159);
+        font-weight: 600;
+      }
+
+      .card-container {
+        justify-content: start;
+      }
+      #countNotes {
+        font-size: 20px;
+        font-weight: 600;
+        color: rgb(196, 140, 159);
+      }
+      .deleteIcon {
+        font-size: 20px;
+        font-weight: 600;
+        position: relative;
+        top: -40px;
+        color: rgb(196, 140, 159);
+      }
+      #deleteNote {
+        font-size: 28px;
+        box-sizing: content-box;
+        height: 120px;
+        position: relative;
+        background: transparent;
+        color: rgb(196, 140, 159);
+        border: none;
+      }
+      .showIcon a {
+        font-size: 28px;
+        width: 50px;
+        cursor: pointer;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar justify-content-between">
+      <a class="navbar-brand" href="/"
+        ><p class="cssanimation effect3d">Notes !</p></a
+      >
+      <div class="showIcon d-flex justify-content-evenly d-block d-lg-none">
+        <a href="/" class="mx-1"><i class="bi bi-house-check"></i></a>
+      </div>
+
+      <div class="d-flex mx-4 d-none d-lg-block">
+        <a href="/"
+          ><button class="mx-3 btn-one" type="submit" id="Important">
+            <i class="bi bi-house-check"></i></button
+        ></a>
+      </div>
+    </nav>
+
+    <h1 class="mt-3 cssanimation leFadeIn sequence text-center">
+      Important Notes !
+    </h1>
+    <p id="countNotes" class="px-4 pt-3"></p>
+    <div class="deleteIcon px-4">
+      Delete from 1st -:<button
+        class="deleteNote"
+        id="deleteNote"
+        type="submit"
+      >
+        <i class="bi bi-trash"></i>
+      </button>
+    </div>
+
+    <div id="Card" class="card-container row mt-5 mx-5 gx-4 gy-3">
+      <!-- set in js -->
+    </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      async function postData(url = "", data = {}) {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        const resData = await response.json();
+        return resData;
+      }
+
+      async function deleteData(url = "", data = {}) {
+        const response = await fetch(url, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        const resData = await response.json();
+        return resData;
+      }
+
+      function gettingNotes() {
+        if (user && user.email) {
+          const notes = postData("/getImpNotes", { email: user.email });
+          notes.then((Impnotes) => {
+            console.log("ImpNotes", Impnotes.data);
+
+            const Cards = document.getElementById("Card");
+            Cards.innerHTML = "";
+
+            Impnotes.data.forEach((element) => {
+              if (element.important == true) {
+                const note = `
+                  <div class="col-lg-3 col-md-4 col-sm-6 content-card">
+                    <div class="card-big-shadow">
+                        <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+                            <div class="content">
+                                <h6 class="category text-center pt-2" id="title">#${element.title}</h6>
+                                <p class="description px-2 pt-4 " id="descrip">${element.descrip}</p>
+                            </div>
+                        </div> <!-- end card -->
+                    </div>
+                </div>            
+            `;
+                Cards.innerHTML += note;
+                Cards.style.display = "flex";
+                Cards.classList.add("card-container");
+              }
+            });
+          });
+        }
+      }
+
+      const deleteN = document.getElementById("deleteNote");
+      deleteN.addEventListener("click", async () => {
+        const email = user.email;
+        const resp = await deleteData("/deleteNote", { email });
+        console.log(resp.data);
+        gettingNotes();
+        noOfImpNotes();
+      });
+
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (!user) {
+        window.location.href = "/login";
+      }
+      gettingNotes();
+
+      const countImpNotes = document.getElementById("countNotes");
+      function noOfImpNotes() {
+        const countNotes = postData("/countImpNotes", { email: user.email });
+        countNotes.then((countingImpNotes) => {
+          console.log("NoOfNotes", countingImpNotes.data);
+          countImpNotes.innerHTML = `Total Notes -: ${countingImpNotes.data.length}`;
+        });
+      }
+      noOfImpNotes();
+    </script>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/letteranimation.min.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+  </body>
+</html>

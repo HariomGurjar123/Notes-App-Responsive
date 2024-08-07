@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>My Notes !</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/cssanimation.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      body {
+        background-color: rgba(90, 90, 90, 0.952);
+        font-family: sans-serif;
+        background-image: url("https://i.pinimg.com/564x/4c/61/7d/4c617dd11adc3b8325b71dfe87b16c6d.jpg");
+        background-position: center;
+        background-repeat: round;
+      }
+
+      .row img {
+        height: 470px;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.52);
+      }
+
+      .signup-container {
+        background-color: aliceblue;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 40px 5px rgba(0, 0, 0, 0.52);
+        text-align: center;
+        width: 350px;
+        transition: background-color 1.5s ease, box-shadow 0.3s ease;
+      }
+      .signup-container:focus-within {
+        color: black;
+        background-color: rgba(240, 248, 255, 0.213);
+        box-shadow: 0 8px 16px rgba(44, 44, 44, 0.2);
+      }
+
+      h2 {
+        margin-bottom: 20px;
+        font-weight: 600;
+        color: #a79595;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+        text-align: left;
+      }
+      .form-group ion-icon {
+        font-size: 22px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+        color: #b7a8a8;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        padding-left: 15px;
+        font-weight: 600;
+        font: sans-serif;
+        box-sizing: border-box;
+        border: none;
+        outline: none;
+        border-radius: 12px;
+        font-size: 18px;
+      }
+      input[type="text"]:focus {
+        background-color: #f0e9e9;
+        border: none;
+      }
+      input[type="password"]:focus {
+        background-color: #f0e9e9;
+        border: none;
+      }
+      input[type="text"]::selection {
+        background-color: #b7a8a8;
+        border: none;
+        color: #a316d6;
+      }
+      input[type="password"]::selection {
+        background-color: #b7a8a8;
+        border: none;
+        color: #a316d6;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .error-message {
+        border: 2px solid rgb(47, 53, 221);
+        border-radius: 0% 50px 0% 50px;
+        padding: 8px;
+        font-family: sans-serif;
+        font-weight: 600;
+        font-size: 17px;
+        color: red;
+        position: relative;
+        top: 15px;
+        display: none;
+      }
+      #lock {
+        margin-left: -30px;
+        font-size: 22px;
+        cursor: pointer;
+      }
+
+      #userCreated {
+        width: 250px;
+        height: 30px;
+        padding-top: 3px;
+        position: absolute;
+        right: 60px;
+        border-radius: 15px;
+        border: 1px solid rgba(0, 0, 0, 0.453);
+        transition: all 1s ease-in-out;
+        background-color: rgb(155, 196, 231);
+        color: rgba(123, 27, 27, 0.677);
+        font-weight: 600;
+        position: fixed;
+        z-index: 99;
+        display: none;
+      }
+
+      .heading {
+        font-size: 33px;
+        color: rgb(42, 72, 85);
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1 class="heading text-center pt-1 cssanimation leFlipInBottom sequence">
+        Capture Ideas With Notes
+      </h1>
+      <div
+        id="userCreated"
+        class="showMsg text-center mt-1 cssanimation fadeInTop"
+      >
+        register successfully
+      </div>
+      <div class="row justify-content-around pt-3">
+        <img
+          src="https://img.freepik.com/premium-photo/3d-hand-signing-document-hand-filling-checklist-clipboard_334596-1245.jpg?w=996"
+          class="col-md-6 d-none d-md-block"
+        />
+
+        <div class="signup-container col-md-6 h-25 mt-4">
+          <h2 class="cssanimation leFadeIn sequence">Sign Up</h2>
+          <div id="signupForm">
+            <div class="form-group">
+              <div class="d-flex">
+                <ion-icon name="person-outline"></ion-icon>
+                <label for="name" class="cssanimation leFadeIn sequence"
+                  >Name</label
+                >
+              </div>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <div class="d-flex">
+                <ion-icon name="mail-open-outline"></ion-icon>
+                <label for="email" class="cssanimation leFadeIn sequence"
+                  >Email</label
+                >
+              </div>
+              <input type="text" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <div class="d-flex">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <label for="password" class="cssanimation leFadeIn sequence"
+                  >Password</label
+                >
+              </div>
+              <div class="d-flex">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  required
+                /><ion-icon
+                  name="eye-outline"
+                  id="lock"
+                  class="mt-2"
+                ></ion-icon>
+              </div>
+            </div>
+
+            <div
+              class="spinner-border text-primary d-none"
+              role="status"
+              id="spinner"
+            >
+              <span class="sr-only"></span>
+            </div>
+
+            <button
+              type="submit"
+              id="submit"
+              class="cssanimation leFadeIn sequence"
+            >
+              Sign Up
+            </button>
+            <div class="d-flex justify-content-evenly">
+              <p>
+                if you have account
+                <ion-icon
+                  name="airplane"
+                  style="position: relative; top: 3px"
+                  class="pt-3"
+                ></ion-icon>
+              </p>
+              <a
+                href="/login"
+                style="
+                  text-decoration: none;
+                  margin-top: 12px;
+                  margin-left: -35px;
+                "
+                >Login</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // Function to post data to the server
+      async function postData(url = "", data = {}) {
+        try {
+          const response = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+
+          if (!response.ok) {
+            throw new Error(`response was not ok on ${response.status} `);
+          }
+
+          const resData = await response.json();
+          return resData;
+        } catch (error) {
+          console.error("There was a problem with the fetch operation:", error);
+          return { success: false, error: error.message };
+        }
+      }
+
+      // Function to handle form submission
+      const handleSubmit = async () => {
+        const emailInput = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const name = document.getElementById("name").value;
+        console.log("User Created", name, emailInput, password);
+
+        let email = emailInput.includes("@")
+          ? emailInput
+          : `${emailInput}@gmail.com`;
+
+        const resp = await postData("/signup", { email, password, name });
+        console.log(resp);
+
+        if (resp.success) {
+          userCreation();
+          resetForm();
+        } else {
+          if (resp.error === "user already exist") {
+            alert("User already exists");
+          } else {
+            alert("Failed to create user: " + (resp.error || "Unknown error"));
+          }
+        }
+      };
+
+      function userCreation() {
+        const showMsgLogin = document.getElementById("userCreated");
+        setTimeout(() => {
+          showMsgLogin.style.display = "block";
+        }, 200);
+
+        setTimeout(() => {
+          showMsgLogin.style.display = "none";
+          window.location.href = "/login";
+        }, 3000);
+      }
+
+      // Function to reset form fields
+      const resetForm = () => {
+        document.getElementById("email").value = "";
+        document.getElementById("password").value = "";
+        document.getElementById("name").value = "";
+      };
+
+      // Add event listener to submit button
+      document.getElementById("submit").addEventListener("click", handleSubmit);
+
+      const lock = document.getElementById("lock");
+      lock.addEventListener("click", () => {
+        if (password.type == "password") {
+          password.type = "text";
+        } else {
+          password.type = "password";
+        }
+      });
+    </script>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/gh/yesiamrocks/cssanimation.io@1.0.3/letteranimation.min.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+  </body>
+</html>
